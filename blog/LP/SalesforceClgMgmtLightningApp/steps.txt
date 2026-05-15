@@ -168,6 +168,7 @@ Steps:
 Setup → App Manager → New Lightning App
 App Name: College Management App
 Add objects → Assign profile → Save
+Select profile as System Administrator
 
 🔹 STEP 3: Open App
 
