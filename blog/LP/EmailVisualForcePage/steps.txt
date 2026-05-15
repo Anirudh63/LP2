@@ -72,9 +72,39 @@ public class EmailController {
     }
 
     private Boolean isValidEmail(String email) {
-        if (String.isBlank(email)) return false;
-        String emailRegex = '^[a-zA-Z0-9._|\\\\%#~`=?&/$^*!}{+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$';
-        return Pattern.compile(emailRegex).matcher(email).matches();
+        if (String.isBlank(email)) {
+            return false;
+        }
+
+        // Check if email contains '@'
+        if (!email.contains('@')) {
+            return false;
+        }
+
+        // Check if email contains '.'
+        if (!email.contains('.')) {
+            return false;
+        }
+
+        // '@' should not be first character
+        if (email.startsWith('@')) {
+            return false;
+        }
+
+        // '.' should not be last character
+        if (email.endsWith('.')) {
+            return false;
+        }
+
+        // Basic domain check
+        if (!(email.endsWith('.com') || 
+            email.endsWith('.in') || 
+            email.endsWith('.org') || 
+            email.endsWith('.net'))) {
+            return false;
+        }
+
+        return true;
     }
 
     private void clearForm() {
